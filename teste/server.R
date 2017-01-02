@@ -14,6 +14,6 @@ shinyServer(function(input, output) {
     
     # generate an rnorm distribution and plot it
     dist <- rnorm(input$obs)
-    hist(dist,col="blue")
+    hist(dist,col="lightgreen")
   })
 })
