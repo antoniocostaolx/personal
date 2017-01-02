@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# server.R\n\nlibrary(quantmod)\nsource(\"helpers.R\")\n\n\nshinyServer(function(input, output) {\n  \n  dataInput <- reactive({  \n    getSymbols(input$symb, src = \"yahoo\", \n               from = input$dates[1],\n               to = input$dates[2],\n               auto.assign = FALSE)\n  })\n  \n  finalInput <- reactive({\n    if (!input$adjust) return(dataInput())\n    adjust(dataInput())\n  })\n  \n  output$plot <- renderPlot({\n    chartSeries(finalInput(), theme = chartTheme(\"white\"), \n                type = \"line\", log.scale = input$log, TA = NULL)\n  })\n})",
+    "created" : 1483118445332.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1479012635",
+    "id" : "2090601B",
+    "lastKnownWriteTime" : 1483118980,
+    "last_content_update" : 1483118980346,
+    "path" : "~/R/ShinyApps/teste/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
