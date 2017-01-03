@@ -5,7 +5,7 @@ OtomotoExecutedDate <- Sys.Date()
 ids <- "ga:5485250"
 
 #Set the working directory for the file's source directory
-setwd(getwd())
+setwd('SortingAnalysis')
 
 # Load up the RGA package. 
 # connect to and pull data from the Google Analytics API
