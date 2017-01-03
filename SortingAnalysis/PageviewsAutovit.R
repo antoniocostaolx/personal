@@ -1,5 +1,3 @@
-install.packages('RGA', repos='http://cran.rstudio.com/')
-install.packages('scales', repos='http://cran.rstudio.com/')
 #Date of execution
 AutovitExecutedDate <- Sys.Date()
 
