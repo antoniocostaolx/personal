@@ -56,11 +56,21 @@ gaDataEPSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "2016-
 # Change the Columns name
 colnames(gaDataEPSortingOtomoto) <- c("Date","PE Sorting")
 
-
 # merge two data frames by Date
 TotalOtomoto <- merge(gaDataTotalSortingOtomoto,gaDataKmSortingOtomoto,by="Date")
 # merge two data frames by Date
 TotalOtomoto <- merge(TotalOtomoto,gaDataEPSortingOtomoto,by="Date")
+
+#Convert Date to Character
+TotalOtomoto[,1] <- as.character(TotalOtomoto[,1])
+
+#Create Total Line
+TotalOtomoto <- rbind(TotalOtomoto, c("Total", colSums (TotalOtomoto[,c(2,3,4)])))
+
+#Convert the metrics to integer
+TotalOtomoto[,2] <- as.integer(TotalOtomoto[,2])
+TotalOtomoto[,3] <- as.integer(TotalOtomoto[,3])
+TotalOtomoto[,4] <- as.integer(TotalOtomoto[,4])
 
 # Calculate the percentage of sorting usage
 TotalOtomoto$"KM Sorting %" <- percent(round(TotalOtomoto$"KM Sorting"/TotalOtomoto$"Total Sorting",4))
@@ -78,3 +88,4 @@ ExibitionOtomoto <- TotalOtomoto[,c("Date",
 
 #Save the Dataframe ExibitionOtomoto in a file to have Cache
 save(ExibitionOtomoto,OtomotoExecutedDate, file = "ExibitionOtomoto.RData")
+

@@ -1,3 +1,5 @@
+# Load up the shiny package.
+library(shiny)
 #Load the file containing the DataFrame with Autovit data
 load("ExibitionAutovit.RData")
 #Load the file containing DataFrame with Otomot data

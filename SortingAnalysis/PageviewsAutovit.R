@@ -5,7 +5,7 @@ AutovitExecutedDate <- Sys.Date()
 ids <- "ga:22130385"
 
 #Set the working directory for the file's source directory
-setwd("/srv/shiny-server/personal/SortingAnalysis")
+setwd(getwd())
 
 # Load up the RGA package. 
 # connect to and pull data from the Google Analytics API
@@ -57,11 +57,21 @@ gaDataEPSortingAutovit <- data.frame(get_ga(profileId = ids, start.date = "2016-
 # Change the Columns name
 colnames(gaDataEPSortingAutovit) <- c("Date","PE Sorting")
 
-
 # merge two data frames by Date
 TotalAutovit <- merge(gaDataTotalSortingAutovit,gaDataKmSortingAutovit,by="Date")
 # merge two data frames by Date
 TotalAutovit <- merge(TotalAutovit,gaDataEPSortingAutovit,by="Date")
+
+#Convert Date to Character
+TotalAutovit[,1] <- as.character(TotalAutovit[,1])
+
+#Create Total Line
+TotalAutovit <- rbind(TotalAutovit, c("Total", colSums (TotalAutovit[,c(2,3,4)])))
+
+#Convert the metrics to integer
+TotalAutovit[,2] <- as.integer(TotalAutovit[,2])
+TotalAutovit[,3] <- as.integer(TotalAutovit[,3])
+TotalAutovit[,4] <- as.integer(TotalAutovit[,4])
 
 # Calculate the percentage of sorting usage
 TotalAutovit$"KM Sorting %" <- percent(round(TotalAutovit$"KM Sorting"/TotalAutovit$"Total Sorting",4))
