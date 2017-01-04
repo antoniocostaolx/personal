@@ -26,7 +26,7 @@ gaDataTotalSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "20
                  end.date = "yesterday", metrics = c("ga:pageViews"), 
                  dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@[order]=filter_float",
                  segment = NULL, samplingLevel = NULL, start.index = NULL,
-                 max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenOtomoto))
+                 max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenAutovit))
 
 # Change the Columns name
 colnames(gaDataTotalSortingOtomoto) <- c("Date","Total Sorting")
@@ -36,7 +36,7 @@ gaDataKmSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "2016-
                              end.date = "yesterday", metrics = c("ga:pageViews"), 
                              dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@[order]=filter_float_mileage",
                              segment = NULL, samplingLevel = NULL, start.index = NULL,
-                             max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenOtomoto))
+                             max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenAutovit))
 
 
 # Change the Columns name
@@ -47,7 +47,7 @@ gaDataEPSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "2016-
                           end.date = "yesterday", metrics = c("ga:pageViews"), 
                           dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@[order]=filter_float_engine_power",
                           segment = NULL, samplingLevel = NULL, start.index = NULL,
-                          max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenOtomoto))
+                          max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenAutovit))
 
 
 # Change the Columns name
