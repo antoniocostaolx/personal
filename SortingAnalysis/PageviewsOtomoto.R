@@ -1,6 +1,6 @@
 #Date of execution
 OtomotoExecutedDate <- Sys.Date()
-#
+
 #Define the ID to Otomoto project in GA
 ids <- "ga:5485250"
 
