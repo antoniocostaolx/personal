@@ -4,9 +4,6 @@ OtomotoExecutedDate <- Sys.Date()
 #Define the ID to Otomoto project in GA
 ids <- "ga:5485250"
 
-#Set the working directory for the file's source directory
-setwd('SortingAnalysis')
-
 # Load up the RGA package. 
 # connect to and pull data from the Google Analytics API
 library(RGA)
@@ -22,7 +19,7 @@ library('scales')
 # save(ga_tokenOtomoto, file = "tokenOtomoto.RData")
 
 #Load the file containing the Authorization to Access GA
-load("tokenOtomoto.RData")
+load("tokenRodrigo.RData")
 
 # Perform query and assign the results to a "data frame" called gaDataTotalSortingOtomoto
 gaDataTotalSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "2016-12-12",
@@ -62,15 +59,15 @@ TotalOtomoto <- merge(gaDataTotalSortingOtomoto,gaDataKmSortingOtomoto,by="Date"
 TotalOtomoto <- merge(TotalOtomoto,gaDataEPSortingOtomoto,by="Date")
 
 #Convert Date to Character
-TotalOtomoto[,1] <- as.character(TotalOtomoto[,1])
-
-#Create Total Line
-TotalOtomoto <- rbind(TotalOtomoto, c("Total", colSums (TotalOtomoto[,c(2,3,4)])))
-
-#Convert the metrics to integer
-TotalOtomoto[,2] <- as.integer(TotalOtomoto[,2])
-TotalOtomoto[,3] <- as.integer(TotalOtomoto[,3])
-TotalOtomoto[,4] <- as.integer(TotalOtomoto[,4])
+# TotalOtomoto[,1] <- as.character(TotalOtomoto[,1])
+# 
+# #Create Total Line
+# TotalOtomoto <- rbind(TotalOtomoto, c("Total", colSums (TotalOtomoto[,c(2,3,4)])))
+# 
+# #Convert the metrics to integer
+# TotalOtomoto[,2] <- as.integer(TotalOtomoto[,2])
+# TotalOtomoto[,3] <- as.integer(TotalOtomoto[,3])
+# TotalOtomoto[,4] <- as.integer(TotalOtomoto[,4])
 
 # Calculate the percentage of sorting usage
 TotalOtomoto$"KM Sorting %" <- percent(round(TotalOtomoto$"KM Sorting"/TotalOtomoto$"Total Sorting",4))
