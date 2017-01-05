@@ -84,5 +84,5 @@ ExibitionOtomoto <- TotalOtomoto[,c("Date",
                      "Total Sorting")]
 
 #Save the Dataframe ExibitionOtomoto in a file to have Cache
-save(ExibitionOtomoto,OtomotoExecutedDate, file = "ExibitionOtomoto.RData")
+save(ExibitionOtomoto,OtomotoExecutedDate,TotalOtomoto, file = "ExibitionOtomoto.RData")
 

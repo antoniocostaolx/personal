@@ -85,5 +85,5 @@ ExibitionAutovit <- TotalAutovit[,c("Date",
                      "Total Sorting")]
 
 #Save the Dataframe ExibitionAutovit in a file to have Cache
-save(ExibitionAutovit,AutovitExecutedDate, file = "ExibitionAutovit.RData")
+save(ExibitionAutovit,AutovitExecutedDate,TotalAutovit, file = "ExibitionAutovit.RData")
 
