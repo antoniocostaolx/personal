@@ -11,22 +11,22 @@ library(RGA)
 library('scales')
 
 # Authorize the Google Analytics account
-# ga_tokenOtomoto <- authorize(username = Clientusername,
+# ga_token <- authorize(username = Clientusername,
 #           client.id = ClientId,
 #           client.secret = ClientSecret,
 #           cache = TRUE, reauth = FALSE, token = NULL)
 # 
-# save(ga_tokenOtomoto, file = "tokenOtomoto.RData")
+# save(ga_token, file = "tokenOtomoto.RData")
 
 #Load the file containing the Authorization to Access GA
-load("tokenRodrigo.RData")
+load("tokenGA.RData")
 
 # Perform query and assign the results to a "data frame" called gaDataTotalSortingOtomoto
 gaDataTotalSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "2016-12-12",
                  end.date = "yesterday", metrics = c("ga:pageViews"), 
-                 dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@[order]=filter_float",
+                 dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@.order.=filter_float",
                  segment = NULL, samplingLevel = NULL, start.index = NULL,
-                 max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenAutovit))
+                 max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_token))
 
 # Change the Columns name
 colnames(gaDataTotalSortingOtomoto) <- c("Date","Total Sorting")
@@ -34,9 +34,9 @@ colnames(gaDataTotalSortingOtomoto) <- c("Date","Total Sorting")
 # Perform query and assign the results to a "data frame" called gaDataKmSortingOtomoto
 gaDataKmSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "2016-12-12",
                              end.date = "yesterday", metrics = c("ga:pageViews"), 
-                             dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@[order]=filter_float_mileage",
+                             dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@.order.=filter_float_mileage",
                              segment = NULL, samplingLevel = NULL, start.index = NULL,
-                             max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenAutovit))
+                             max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_token))
 
 
 # Change the Columns name
@@ -45,9 +45,9 @@ colnames(gaDataKmSortingOtomoto) <- c("Date","KM Sorting")
 # Perform query and assign the results to a "data frame" called gaDataEPSortingOtomoto
 gaDataEPSortingOtomoto <- data.frame(get_ga(profileId = ids, start.date = "2016-12-12",
                           end.date = "yesterday", metrics = c("ga:pageViews"), 
-                          dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@[order]=filter_float_engine_power",
+                          dimensions = c("ga:date"), sort = NULL, filters = "ga:pagePath=@.order.=filter_float_engine_power",
                           segment = NULL, samplingLevel = NULL, start.index = NULL,
-                          max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_tokenAutovit))
+                          max.results = NULL, include.empty.rows = NULL, fetch.by = NULL, ga_token))
 
 
 # Change the Columns name
