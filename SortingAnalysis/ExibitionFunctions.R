@@ -1,3 +1,8 @@
+#Load the file containing the DataFrame with Autovit data
+load("ExibitionAutovit.RData")
+#Load the file containing DataFrame with Otomot data
+load("ExibitionOtomoto.RData")
+
 TotalExibitionAutovit <- function(input){
   KMSorting <-  sum (TotalAutovit[
     TotalAutovit$Date >= input$date_range[1] & 
